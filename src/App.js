@@ -1,48 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
+import React, { useContext, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "./contexts/authContext";
+import LoginPage from "./components/loginPage/LoginPage";
+import BatchList from "./components/batchesList/BatchList";
+import './App.css'
+import QrDisplayPage from "./components/qrDisplay/QrDisplayPage";
+
 
 function App() {
-  const [qrData, setQrData] = useState({});
-  const batchName = "DS-SABIR-B2"; 
-
-  const generateQrData = () => {
-    const startTime = new Date(Date.now());
-    const endTime = new Date(startTime.getTime() + 30 * 1000); 
-
-
-
-    const data = {
-      batchName,startTime,
-      endTime:endTime,
-    };
-console.log(data);
-
-    setQrData(data);
-  };
-
+  const { getCurrentUser } = useContext(AuthContext);
+  const user = getCurrentUser();
+  const navigate = useNavigate();
   useEffect(() => {
-    generateQrData();
+    const token = localStorage.getItem("token");
 
-    const interval = setInterval(() => {
-      generateQrData();
-    }, 30000);
-
-    return () => clearInterval(interval); 
-  }, []);
+    if (!token) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Luminar Attendance Management for Students</h1>
-      <QRCodeCanvas
-        value={qrData && Object.keys(qrData).length > 0 ? JSON.stringify(qrData) : "Generating..."}
-        size={650}
-        bgColor={"#ffffff"}
-        fgColor={"#000000"}
-        level={"L"}
-        includeMargin={true}
-      />
-      <p>Scan the QR code to mark your attendance.</p>
-    </div>
+    <>
+    <Routes>
+      <Route path="/" element={user ? <BatchList /> : <LoginPage />}></Route>
+      <Route path="/qrPage" element={<QrDisplayPage />} />
+      </Routes>
+      </>
   );
 }
 

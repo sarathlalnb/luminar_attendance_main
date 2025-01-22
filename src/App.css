@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-colour {
+  color: #661b8a;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.side-img {
+  height: 100vh;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-container {
+  height: 100vh;
+  border-left: 1px dotted;
+}
+
+.form-container {
+  height: 70vh;
+  margin-top: 25vh;
+  margin-left: 10vh;
+}
+
+.logo {
+  height: 10vh;
+}
+
+.ttile {
+  color: #993d99;
+  font-size: 35px;
+  /* font-style: normal; */
+  font-weight: bolder;
+  line-height: normal;
+}
+
+.inputbox {
+  width: 349px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  outline: none;
+  border: dotted 0.1px;
+  /* background-color: #d9d9d9; */
+  padding: 10px;
+}
+
+.data-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-right: 17%;
 }
 
-.App-link {
-  color: #61dafb;
+.login-btn {
+  background-color: white;
+  border: dotted 0.1px;
+  color: #661b8a;
+  width: 200px;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 750px) {
+  .data-container {
+    display: flex;
+    /* margin-left: 17%; */
+    /* justify-content: center; */
   }
-  to {
-    transform: rotate(360deg);
+  .title-container-logo {
+    display: flex;
+    justify-content: center !important;
+  }
+  .title-container {
+    display: flex;
+    justify-content: center;
+  }
+  .hide {
+    display: none;
+  }
+  .form-container {
+    height: 80vh;
+    width: 40vh;
+    /* margin-top: 25vh; */
+    margin-left: 5vh;
+  }
+}
+
+@media (max-width: 454px) {
+  .title-container {
+    display: flex;
+    justify-content: center;
+  }
+  .title-container h1 {
+    font-size: x-large;
+  }
+  .title-container-logo {
+    display: flex;
+    justify-content: center !important;
+  }
+  .title-container-logo .logo {
+    height: 12vh;
+  }
+
+  .login-container {
+    height: 100vh;
+    border: none;
+  }
+
+  .form-container {
+    height: 70vh;
+    /* margin-top: 25vh; */
+    /* margin-left: 10vh; */
   }
 }
