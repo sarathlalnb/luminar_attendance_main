@@ -18,7 +18,7 @@ const BatchList = () => {
       }
 
       try {
-        const response = await axios.get("https://api.crm.luminartechnolab.com/api/batch?_end=5&_order=DESC&_sort=createdAt&_start=0&filter=%5B%5D", {
+        const response = await axios.get("https://api.crm.luminartechnolab.com/api/batch?_end=500&_order=DESC&_sort=createdAt&_start=0&filter=%5B%5D", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
